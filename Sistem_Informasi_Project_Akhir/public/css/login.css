@@ -1,0 +1,306 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+img { /* Gaya umum untuk gambar, mungkin ini adalah logo Anda */
+    width: 150px; /* Jika .logo-besar tidak digunakan, ini berlaku. Jika .logo-besar digunakan, ia akan menimpa ini. */
+    height: 150px;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.form-wrapper {
+    width: 420px;
+    min-height: 500px;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Calibri', sans-serif;
+    padding: 20px 20px 5px;
+    backdrop-filter: blur(50px);
+    border: 1px solid #ffffff4f;
+    box-shadow: 0px 0px 20px 0px #00000070;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.field {
+    position: relative; /* Tetap diperlukan untuk @error jika diposisikan absolut, tapi tidak krusial jika @error standar */
+    margin-top: 45px;
+    width: 100%;
+}
+
+.field .bi { /* Ini menata semua ikon bootstrap di dalam .field */
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    color: #e3e3e3;
+}
+
+.toggle-pass { /* Hanya untuk kursor pada ikon mata */
+    cursor: pointer;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input { /* Gaya umum untuk input di dalam form */
+    background-color: transparent;
+    border: none;
+}
+
+/* Sembunyikan ikon "lihat password" bawaan browser untuk mencegah duplikasi */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none !important; /* Important untuk memastikan override */
+    width: 0;
+    height: 0;
+}
+
+input[type="password"]::-webkit-reveal, /* Untuk Chrome/Edge Chromium/Opera */
+input[type="password"]::-webkit-clear-button { /* Tombol clear, jaga-jaga */
+    display: none !important;
+    -webkit-appearance: none !important;
+}
+
+.input-area {
+    position: relative; /* Penting agar ikon absolut mengacu pada ini */
+    width: 100%;
+}
+
+.inp {
+    width: 100%;
+    color: white;
+    font-size: 16px;
+    caret-color: white;
+    outline: none;
+    padding: 0 25px 5px 0; /* Padding kanan untuk memberi ruang ikon */
+    border-bottom: 1px solid #ffffff54;
+    box-sizing: border-box;
+}
+
+/* .icon { HAPUS KARENA TIDAK DIGUNAKAN (ikon ditata oleh .field .bi)
+    color: white;
+} */
+
+.label {
+    position: absolute;
+    left: 0px;
+    bottom: 5px;
+    z-index: -1;
+    color: white;
+    transition: transform .3s ease-in-out, color .3s ease-in-out, font-size .3s ease-in-out;
+}
+
+.inp:focus~label,
+.inp:valid~label {
+    transform: translateY(-45px); /* Nilai sebelumnya -45px, sesuaikan jika ini lebih baik */
+    font-size: 15px;
+    color: white;
+}
+
+.action {
+    display: flex;
+    justify-content: space-between; /* Ini akan menempatkan checkbox di kiri dan (jika ada) link di kanan */
+    align-items: center; /* Menyelaraskan item secara vertikal */
+    font-size: 15px;
+    color: #dddddd;
+    user-select: none;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.action label { /* Gaya untuk label "Ingat Saya" */
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center; /* Menyelaraskan checkbox dan teks label */
+}
+
+/* #save-info { HAPUS KARENA ID INI TIDAK ADA DI HTML (HTML menggunakan id="remember")
+    cursor: pointer;
+} */
+
+#login-btn {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.089);
+    width: 100%;
+    color: white;
+    border-radius: 5px;
+    margin-top: 40px;
+    font-size: 18px;
+    font-family: 'Calibri', sans-serif;
+    padding: 5px 0;
+    border: none;
+}
+
+.separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    background: #0000004f;
+    width: 40%;
+    height: 1px;
+}
+
+.alternative {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.alternative button {
+    border: none;
+    font-size: 14px;
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #00000033;
+    color: #f0f0f0;
+}
+
+#login-btn:hover,
+.alternative button:hover {
+    opacity: 0.8;
+}
+
+.bottom {
+    margin-top: 35px;
+    font-size: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.8;
+    background-image: url('/foto/RiyanthiSianturi_ITDEL_11.jpg'); /* Pastikan path ini benar */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* --- Responsive Adjustments for Mobile Phones --- */
+@media (max-width: 600px) {
+    .main-container {
+        align-items: flex-start;
+        padding: 20px 10px;
+    }
+
+    img { /* Gaya untuk logo di mobile */
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .form-wrapper {
+        width: 90%;
+        max-width: 380px;
+        height: auto;
+        min-height: 0;
+        padding: 20px 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-title {
+        font-size: 26px;
+    }
+
+    .field {
+        margin-top: 35px;
+    }
+
+    .inp {
+        font-size: 15px;
+    }
+
+    .inp:focus~label,
+    .inp:valid~label {
+        font-size: 14px;
+        /* transform: translateY(-25px); Anda mungkin ingin menyesuaikan ini juga untuk mobile jika -45px terlalu banyak */
+    }
+
+    .action {
+        font-size: 14px;
+        flex-direction: column; /* Checkbox dan link "Lupa Password?" akan bertumpuk */
+        gap: 10px;
+        align-items: flex-start; /* Rata kiri untuk mobile */
+    }
+    .action a { /* Jika Anda memiliki link "Lupa Password?" di dalam .action */
+        padding: 5px 0;
+    }
+
+    #login-btn {
+        margin-top: 30px;
+        font-size: 17px;
+        padding: 8px 0;
+    }
+
+    .separator {
+        margin-top: 25px;
+    }
+    .separator::before,
+    .separator::after {
+        width: 35%;
+    }
+
+    .alternative {
+        margin-top: 20px;
+    }
+
+    .bottom {
+        margin-top: 25px;
+        font-size: 14px;
+    }
+}
